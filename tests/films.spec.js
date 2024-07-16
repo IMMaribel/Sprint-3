@@ -293,8 +293,24 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be declared', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
+  });
+
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
+  });
+
+  it('should return the average score of Drama movies', () => {
+    const dramaMovies = movies.filter(movie => movie.genre.includes('Drama'));
+    const expectedAverage = dramaMovies.reduce((sum, movie) => sum + movie.score, 0) / dramaMovies.length;
+    expect(moviesAverageByCategory(movies, 'Drama')).toBeCloseTo(expectedAverage, 2);
+  });
+
+  it('should return the average score of Crime movies', () => {
+    const crimeMovies = movies.filter(movie => movie.genre.includes('Crime'));
+    const expectedAverage = crimeMovies.reduce((sum, movie) => sum + movie.score, 0) / crimeMovies.length;
+    expect(moviesAverageByCategory(movies, 'Crime')).toBeCloseTo(expectedAverage, 2);
   });
 });
 
