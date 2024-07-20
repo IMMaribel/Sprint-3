@@ -70,15 +70,20 @@ function hoursToMinutes(array) {
     }
     movie.duration = totalMinutes;
   });
-  
+
   console.log("EXERCICE 7 ->", copiedArray);
   return copiedArray;
   };
 
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(movies, year) {
+  const moviesOfYear = movies.filter(movie => movie.year === year);
+  const bestMovie = moviesOfYear.reduce((best, current) => {
+    return (current.score > best.score) ? current : best;
+  }, moviesOfYear[0]);
+  console.log("EXERCICE 8 ->", bestMovie);
+  return [bestMovie];
 }
 
 
